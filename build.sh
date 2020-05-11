@@ -2,4 +2,5 @@
 
 set -euo pipefail
 
-docker build -t crs4/cmake:3.14 .
+v=3.17.2
+docker build --build-arg v=${v} -t crs4/cmake:${v} -t crs4/cmake:${v%.*} .
