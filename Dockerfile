@@ -1,6 +1,6 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-ARG v=3.17.2
+ARG v=3.21.2
 
 RUN apt-get -y update && apt-get -y install --no-install-recommends \
       build-essential ca-certificates wget && \
