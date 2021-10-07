@@ -1,11 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
-ARG v=3.21.2
+ARG v=3.21.3
 
 RUN apt-get -y update && apt-get -y install --no-install-recommends \
       build-essential ca-certificates wget && \
-    wget -q https://cmake.org/files/v${v%.*}/cmake-${v}-Linux-x86_64.tar.gz && \
-    tar xf cmake-${v}-Linux-x86_64.tar.gz && \
-    cp -rf cmake-${v}-Linux-x86_64/bin /usr/ && \
-    cp -rf cmake-${v}-Linux-x86_64/share /usr/ && \
-    rm -rf cmake-${v}-Linux-x86_64.tar.gz cmake-${v}-Linux-x86_64
+    wget -q https://github.com/Kitware/CMake/releases/download/v${v}/cmake-${v}-linux-x86_64.sh && \
+    chmod u+x cmake-${v}-Linux-x86_64.sh && \
+    ./cmake-${v}-linux-x86_64.sh --skip-license --prefix=/usr/local && \
+    rm -f cmake-${v}-linux-x86_64.sh
